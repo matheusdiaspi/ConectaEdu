@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaEdu - Educação e Tecnologia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>ConectaEdu</h1>
+            <nav>
+                <ul>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#planos">Planos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h2>Educação, Tecnologia e Acessibilidade</h2>
+            <p>Um espaço educacional equipado com computadores, internet de qualidade e monitores capacitados.</p>
+            <button id="cta-button" class="cta-button">Conheça Nossos Cursos</button>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="servicos" class="services-section">
+        <div class="container">
+            <h3>O que oferecemos 📚</h3>
+            
+            <div class="search-box">
+                <input type="text" id="pdf-search" placeholder="Buscar material didático, PDF ou curso...">
+                <button onclick="searchMaterial()">Buscar</button>
+            </div>
+            
+            <div id="pdf-results" class="pdf-results">
+                </div>
+            
+            <div class="service-grid" id="service-grid">
+                <div class="service-card">
+                    <h4>Reforço Escolar</h4>
+                    <p>Para alunos do ensino fundamental e médio.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Habilidades Digitais</h4>
+                    <p>Aulas de informática, Word, Excel, Canva e digitação.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Preparação Profissional</h4>
+                    <p>Preparo para o Enem e concursos públicos.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Capacitação Comunitária</h4>
+                    <p>Oficinas sobre empreendedorismo, finanças pessoais e cidadania.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+    
+    <section id="planos" class="plans-section">
+        <div class="container">
+            <h3>Nossos Planos Acessíveis 💰</h3>
+            <p class="subtitle">Encontre a opção ideal para seu aprendizado.</p>
+            <div class="plan-grid">
+                
+                <div class="plan-card destaque">
+                    <h4>Reforço Escolar Mensal</h4>
+                    <p class="price">A partir de R$ 50,00</p>
+                    <ul>
+                        <li>Reforço 2x por semana</li>
+                        <li>Acesso ao espaço educacional</li>
+                        <li>Materiais didáticos inclusos</li>
+                    </ul>
+                    <button class="plan-button">Inscreva-se</button>
+                </div>
+
+                <div class="plan-card">
+                    <h4>Cursos Rápidos</h4>
+                    <p class="price">R$ 80 a R$ 120</p>
+                    <ul>
+                        <li>Informática básica ou preparatório</li>
+                        <li>Preço conforme a carga horária</li>
+                        <li>Certificado de conclusão</li>
+                    </ul>
+                    <button class="plan-button">Saiba Mais</button>
+                </div>
+                
+                <div class="plan-card">
+                    <h4>Benefícios Especiais</h4>
+                    <p class="price">Descontos e Promoções</p>
+                    <ul>
+                        <li>Descontos para famílias com mais de um aluno</li>
+                        <li>Promoções na volta às aulas</li>
+                        <li>Parcerias com empresas locais</li>
+                    </ul>
+                    <button class="plan-button">Fale Conosco</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr>
+    
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h3>Entre em Contato 📞</h3>
+            <p>Para parcerias, bolsas ou informações, entre em contato!</p>
+            <div class="contact-info">
+                <p>📍 Localização: Bairro Central (A ser definido)</p>
+                <p>📧 Email: contato@conectaedu.com.br</p>
+                <p>📱 WhatsApp: (89) 9 9928-7250</p>
+                <p class="marketing-tip">Divulgação nas redes sociais (Facebook, WhatsApp, Instagram).</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ConectaEdu. | "Com um investimento acessível, é possível gerar impacto social e ainda obter retorno financeiro."</p>
+            <p>Siga-nos: Facebook | WhatsApp | Instagram</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
