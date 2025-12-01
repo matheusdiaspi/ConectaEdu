@@ -79,16 +79,33 @@ window.addEventListener('scroll', function() {
 });
 
 
-// 4. Função para Abrir o PDF em uma NOVA ABA
-function openPdf(fileName) {
-    // Usa a função que você confirmou que funcionava para caminhos de arquivo locais.
-    window.open(fileName, '_blank');
-    console.log(`Abrindo o arquivo: ${fileName} em nova aba.`);
+// =================================================================
+// 4. Função para Abrir o PDF em uma NOVA ABA (COM PÁGINA E DESTAQUE)
+// =================================================================
+function openPdf(fileName, page, searchTerm) {
+    let url = fileName;
+    
+    // 1. Adiciona o parâmetro #page=N ao link do PDF (para ir para a página)
+    if (page && page > 1) {
+        url += `#page=${page}`;
+    }
+    
+    // 2. Adiciona o parâmetro #search="termo" ao link do PDF (para destacar o termo)
+    if (searchTerm && searchTerm.trim() !== '') {
+        const encodedSearchTerm = encodeURIComponent(searchTerm.trim());
+        
+        // Se a URL já tiver o parâmetro de página, garantimos que o #search venha em seguida
+        // O navegador tentará ir para a página e buscar o termo automaticamente
+        url += `#search="${encodedSearchTerm}"`;
+    }
+    
+    window.open(url, '_blank');
+    console.log(`Abrindo o arquivo: ${fileName} na página: ${page}, buscando por: ${searchTerm}.`);
 }
 
 
 // =================================================================
-// 5. LÓGICA PRINCIPAL DO BUSCADOR (PÁGINA REMOVIDA)
+// 5. LÓGICA PRINCIPAL DO BUSCADOR (COM ONCLICK, PÁGINA E DESTAQUE)
 // =================================================================
 function searchMaterial() {
     const searchTerm = document.getElementById('pdf-search').value.toLowerCase();
@@ -105,7 +122,7 @@ function searchMaterial() {
         return; 
     }
 
-    // --- 5.1. Lista de Documentos Searchables (O campo 'page_start' foi mantido, mas não será usado no HTML) ---
+    // --- 5.1. Lista de Documentos Searchables (COM page_start) ---
     const documents = [
         // Processadores AMD x INTEL (ConectaEdu.pdf)
         { 
@@ -113,10 +130,10 @@ function searchMaterial() {
           keywords: 'arquitetura de computadores, amd, intel, processadores, desenvolvimento de sistema', 
           url: 'ConectaEdu.pdf', 
           content: pdfContent_ConectaEdu,
-          page_start: 3 
+          page_start: 3 // O conteúdo relevante começa na página 3
         },
         
-        // Guia Rápido de Canva e Design
+        // Guia Rápido de Canva e Design (REMOVA SE NÃO TIVER O ARQUIVO GuiaCanva.pdf)
         { 
           title: 'Guia Rápido de Canva e Design', 
           keywords: 'canva, design, habilidades digitais', 
@@ -150,26 +167,25 @@ function searchMaterial() {
         if (doc.content) {
             const matches = searchPdfContent(doc.content, searchTerm);
             if (matches.length > 0) {
-                // Passa o page_start para os resultados (se necessário para uso futuro)
                 pdfContentMatches.push({ title: doc.title, url: doc.url, phrases: matches, page_start: doc.page_start }); 
             }
         }
     });
 
 
-    // --- 5.4. Exibição dos Resultados (PÁGINA REMOVIDA DA EXIBIÇÃO) ---
+    // --- 5.4. Exibição dos Resultados (DESTAQUE INCLUÍDO) ---
     if (pdfContentMatches.length > 0) {
         htmlPdfResults += '<h4>📁 Trechos Encontrados em Documentos e Materiais Didáticos:</h4>';
         
         pdfContentMatches.forEach(docMatch => {
             
-            // Título do Documento: REMOVIDA A INDICAÇÃO DE PÁGINA (Página ${docMatch.page_start})
-            htmlPdfResults += `<h5 style="margin-top: 20px; color: var(--secondary-color); font-size: 1.1rem;">No documento: ${docMatch.title} (<a href="#" onclick="openPdf('${docMatch.url}'); return false;">Abrir PDF completo</a>)</h5>`;
+            // Link secundário "Abrir PDF completo"
+            htmlPdfResults += `<h5 style="margin-top: 20px; color: var(--secondary-color); font-size: 1.1rem;">No documento: ${docMatch.title} (Página ${docMatch.page_start}) (<a href="#" onclick="openPdf('${docMatch.url}', ${docMatch.page_start}, '${searchTerm}'); return false;">Abrir PDF completo</a>)</h5>`;
             
-            // Loop para as frases com onclick
+            // Loop para as frases. O onclick agora chama a função com a página e o termo!
             docMatch.phrases.forEach(phrase => {
-                // A frase tem 'cursor: pointer' e o evento que abre o PDF
-                htmlPdfResults += `<p class="pdf-item" style="cursor: pointer; background-color: #f0f0f0; border-left: 3px solid #4682B4; margin-bottom: 5px;" onclick="openPdf('${docMatch.url}'); return false;">... ${phrase}</p>`;
+                // Ao clicar na frase, abrimos o PDF na página onde o conteúdo começa E destacamos o termo
+                htmlPdfResults += `<p class="pdf-item" style="cursor: pointer; background-color: #f0f0f0; border-left: 3px solid #4682B4; margin-bottom: 5px;" onclick="openPdf('${docMatch.url}', ${docMatch.page_start}, '${searchTerm}'); return false;">... ${phrase}</p>`;
             });
         });
     }
