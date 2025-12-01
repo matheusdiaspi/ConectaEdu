@@ -1,3 +1,5 @@
+/* style.css - CÓDIGO FINAL COM ALINHAMENTO VERTICAL (LISTA) E HORIZONTAL (BOTÕES) */
+
 /* Reset Básico */
 * {
     margin: 0;
@@ -14,6 +16,9 @@
     --background-light: #fff;
     --background-gray: #f9f9f9;
     --background-dark: #222;
+    /* Variáveis de Sombra Padronizadas */
+    --shadow-standard: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15); 
 }
 
 body {
@@ -92,7 +97,7 @@ hr {
 
 /* --- Seção Hero --- */
 .hero-section {
-    background: linear-gradient(rgba(46, 139, 87, 0.8), rgba(70, 130, 180, 0.7)), url('hero-background.jpg'); /* Adicione uma imagem de fundo para o hero */
+    background: linear-gradient(rgba(46, 139, 87, 0.8), rgba(70, 130, 180, 0.7)), url('hero-background.jpg'); 
     background-size: cover;
     background-position: center;
     color: var(--text-light);
@@ -159,7 +164,7 @@ hr {
     background-color: #3872A5;
 }
 
-/* --- NOVO: Estilo para Resultados de PDF --- */
+/* --- Estilo para Resultados de PDF (com hover) --- */
 .pdf-results {
     text-align: left;
     max-width: 900px;
@@ -184,15 +189,15 @@ hr {
     text-decoration: none;
     color: var(--text-dark);
     transition: background-color 0.2s, box-shadow 0.2s;
+    cursor: pointer; 
 }
 
 .pdf-item:hover {
-    background-color: #e6f7ff; /* Fundo levemente azulado ao passar o mouse */
+    background-color: #e6f7ff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     color: var(--secondary-color);
     font-weight: 600;
 }
-/* --- FIM NOVO --- */
 
 
 /* --- Seção de Serviços --- */
@@ -207,15 +212,23 @@ hr {
     background-color: var(--background-light);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    box-shadow: var(--shadow-standard); 
+    
+    /* ANIMAÇÃO 1: Adiciona transição para o hover */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    
     text-align: left;
-    border-left: 5px solid var(--primary-color); /* Cor de destaque original */
+    /* Borda lateral removida */
+    border-left: 5px solid transparent; 
+    
+    cursor: pointer;
 }
 
+/* 🚀 ANIMAÇÃO 1: Efeito de Hover nos Cards de Serviço */
 .service-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    /* Sombra mais forte no hover */
+    box-shadow: var(--shadow-hover);
 }
 
 .service-card h4 {
@@ -245,20 +258,35 @@ hr {
     background-color: var(--background-gray);
     padding: 40px 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-standard);
     text-align: center;
+    
+    /* FLEXBOX PRINCIPAL: Garante que o botão fique no rodapé (alinha horizontalmente) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    cursor: pointer;
 }
 
+/* 🚀 ANIMAÇÃO 2: Efeito de Hover (Eleva e Aumenta a Sombra) */
+.plan-card:hover {
+    transform: translateY(-5px); /* Move 5px para cima */
+    box-shadow: var(--shadow-hover);
+}
+
+/* PLANO DESTAQUE: Idêntico aos outros cards de plano */
 .plan-card.destaque {
-    background-color: var(--background-light);
-    border: 3px solid var(--primary-color);
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background-color: var(--background-gray); 
+    box-shadow: var(--shadow-standard); 
+    border: none; 
 }
 
 .plan-card h4 {
     color: var(--text-dark);
-    font-size: 1.8rem;
+    /* Corrigido: Reduzindo o tamanho da fonte para evitar quebra de linha indesejada */
+    font-size: 1.6rem;
     margin-bottom: 10px;
 }
 
@@ -266,20 +294,45 @@ hr {
     color: var(--secondary-color);
     font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    /* AJUSTE: Aumentando a margem para uniformizar o espaço vertical acima da lista */
+    margin-bottom: 40px; 
 }
 
 .plan-card ul {
     list-style: none;
-    text-align: center;
-    padding: 0;
-    margin-bottom: 30px;
+    
+    /* FLEXBOX NA LISTA: Usado para forçar o alinhamento de itens ao topo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Garante que o primeiro item comece no topo da área disponível */
+    align-items: flex-start; 
+    
+    text-align: left; 
+    padding: 0 10px;
+    
+    flex-grow: 1; 
+    margin-bottom: 30px; 
 }
 
 .plan-card ul li {
-    padding: 8px 0;
-    border-bottom: 1px dashed #ddd;
+    padding: 10px 0;
+    font-size: 0.95rem; 
+    /* Linha sólida e suave para separar os itens */
+    border-bottom: 1px solid #f0f0f0; 
 }
+
+/* Remove a linha do último item */
+.plan-card ul li:last-child {
+    border-bottom: none;
+}
+
+/* ✅ AJUSTE CRÍTICO DE ALINHAMENTO VERTICAL DA LISTA */
+/* Alinha o primeiro item da lista do card central (Cursos Rápidos) com os laterais */
+.plan-grid .plan-card:nth-child(2) ul {
+    /* NOVO VALOR: Aumentado para 60px para garantir que o bloco de lista se alinhe com os vizinhos */
+    margin-top: 60px; 
+}
+
 
 /* --- Seção de Contato --- */
 .contact-section {
