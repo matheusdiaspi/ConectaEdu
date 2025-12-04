@@ -1,43 +1,89 @@
-// script.js
+// script.js - CÓDIGO FINAL (SEM A FRASE "ENCONTRADO NAS PALAVRAS-CHAVE")
 
 // =================================================================
-// 0. CONTEÚDO DE TEXTO DOS PDFs PARA PESQUISA INTERNA (FULL-TEXT)
+// 0. CONTEÚDO DE TEXTO DO PDF (CARREIRA EMPREENDEDORA.pdf)
 // =================================================================
 
-const pdfContent_ConectaEdu = `
-1. Arquitetura de Computadores: Explorando os Processadores AMD e Intel
-A arquitetura de computadores é uma área fascinante que nos permite compreender o funcionamento interno dos dispositivos que utilizamos diariamente. Nesse contexto, os processadores desempenham um papel crucial, sendo responsáveis por executar as instruções que tornam possível a realização das mais diversas tarefas em nossos computadores. No mercado, dois gigantes se destacam: AMD e Intel. Vamos explorar as nuances dessas arquiteturas, entender suas diferenças e semelhanças, e mergulhar no universo que molda o desempenho dos dispositivos que utilizamos. 
-Continuando nossa jornada pela arquitetura de computadores e a rivalidade entre AMD e Intel, é fundamental compreender a estrutura interna desses processadores. A AMD, com sua arquitetura Ryzen, adota o conceito de múltiplos núcleos agrupados em CCX (Complexo de Computação e Comunicação), formando uma espécie de "ecossistema de núcleos". Isso permite uma distribuição eficiente de tarefas, beneficiando principalmente as atividades que se beneficiam da execução simultânea de processos. Em contrapartida, a Intel utiliza a arquitetura Core, conhecida por sua ênfase em alcançar altas frequências de clock. Cada núcleo, nesse caso, é otimizado para desempenhar tarefas complexas de forma rápida e eficaz. 
-A AMD também se destaca pela utilização da tecnologia de fabricação FinFET, que contribui para a eficiência energética e o desempenho geral. Essa abordagem possibilita a produção de processadores mais poderosos sem aumentar significativamente o consumo de energia. Por outro lado, a Intel, embora tenha enfrentado desafios recentes em relação à redução do tamanho dos transistores, historicamente tem sido pioneira nesse aspecto, impactando diretamente na capacidade de integração de mais transistores em um espaço menor. 
-Além disso, a gestão da memória cache é um elemento crucial na arquitetura de ambos os fabricantes. A AMD, ao adotar um modelo de cache L3 compartilhado entre os núcleos, promove uma maior cooperação entre eles, facilitando o acesso a dados compartilhados. A Intel, por sua vez, muitas vezes utiliza uma abordagem de cache mais hierárquica, com diferentes níveis de cache para otimizar o acesso a dados frequentemente utilizados. 
-Essas nuances técnicas, embora possam parecer complexas à primeira vista, têm um impacto direto na experiência do usuário. A escolha entre AMD e Intel não se resume apenas a números e especificações, mas à maneira como essas tecnologias se traduzem na velocidade de resposta, na capacidade de multitarefa e na eficiência energética de nossos dispositivos. 
-Arquitetura AMD: Inovação e Competitividade 
-A AMD (Advanced Micro Devices) tem conquistado seu espaço no mercado de processadores com uma abordagem inovadora e competitiva. A empresa tem se destacado especialmente nas últimas décadas, desafiando a hegemonia da Intel. A arquitetura dos processadores AMD é conhecida por sua eficiência em multitarefa, proporcionando um excelente desempenho em situações que exigem o processamento simultâneo de várias tarefas. 
-Os processadores AMD adotam a arquitetura Ryzen, que é modular e escalável, permitindo uma ampla gama de opções para atender às necessidades específicas dos usuários. Isso significa que, ao escolher um processador AMD, os consumidores têm a flexibilidade de optar por modelos que atendam às demandas desde tarefas simples do dia a dia até aplicações mais exigentes, como edição de vídeo e jogos pesados. 
-Dentro do universo de processadores, a AMD tem se destacado como uma força impulsionadora da inovação e da competitividade. A arquitetura AMD Ryzen, em particular, representa um marco significativo na abordagem da empresa para atender às demandas diversificadas dos usuários. Essa arquitetura é conhecida por seu design modular, permitindo uma flexibilidade única na criação de processadores adaptáveis a diversas necessidades.  
-A modularidade da arquitetura Ryzen se traduz em uma vasta gama de opções para os consumidores. Ao oferecer diferentes configurações de núcleos e threads, a AMD possibilita que os usuários escolham processadores que atendam especificamente às exigências de suas atividades diárias. Desde tarefas básicas, como navegação na web, até atividades mais intensivas, como edição de vídeos e jogos, a AMD fornece opções que equilibram desempenho e custo. 
-Outro ponto de destaque na arquitetura AMD é a ênfase na capacidade de multitarefa. Com a inclusão de um número significativo de núcleos, os processadores Ryzen se destacam em situações em que diversas tarefas precisam ser executadas simultaneamente. Isso é particularmente benéfico para profissionais que lidam com projetos complexos, como designers, editores de vídeo e desenvolvedores, que podem experimentar ganhos substanciais de eficiência ao realizar várias tarefas ao mesmo tempo. 
-A AMD, ao alinhar inovação e competitividade, tem contribuído para um cenário de mercado mais dinâmico e diversificado. A constante evolução da arquitetura Ryzen não apenas desafia as normas estabelecidas, mas também oferece aos consumidores mais opções e maior poder de escolha ao decidirem qual processador melhor atende às suas necessidades específicas. 
-a. Arquitetura Intel: Tradição e Inovação 
-A Intel, por sua vez, é uma empresa com uma longa tradição na fabricação de processadores. Sua arquitetura, baseada na microarquitetura x86, tem sido a espinha dorsal de computadores pessoais por décadas. A empresa busca constantemente inovações para manter sua posição de destaque no mercado. Os processadores Intel, como os da linha Core, são conhecidos por sua excelente performance em tarefas que demandam alta frequência de clock. Isso faz com que se destaquem em atividades que exigem grande poder de processamento por núcleo, como jogos e softwares de edição. A Intel também tem investido em recursos específicos, como a tecnologia Hyper-Threading, que simula núcleos virtuais para melhorar a eficiência em multitarefa. 
-A Intel, com sua longa tradição na fabricação de processadores, combina a estabilidade proveniente de décadas de experiência com uma busca constante por inovação. A arquitetura Intel Core é um testemunho dessa combinação, incorporando elementos tradicionais e inovadores para atender às exigências modernas dos usuários. A base dessa arquitetura é a microarquitetura x86, que se tornou uma referência na indústria de computadores pessoais, proporcionando compatibilidade e familiaridade aos usuários.  
-A inovação na arquitetura Intel se manifesta em várias frentes, sendo uma das mais notáveis a ênfase na obtenção de altas frequências de clock. Essa abordagem visa proporcionar um desempenho excepcional em tarefas que demandam uma resposta rápida de um único núcleo. Em atividades como jogos e determinadas aplicações profissionais, onde o paralelismo não é crucial, essa característica torna os processadores Intel particularmente eficazes. 
-A tecnologia Hyper-Threading é outro aspecto inovador da arquitetura Intel, oferecendo a simulação de núcleos virtuais para melhorar a eficiência em multitarefa. Isso significa que um processador Intel com Hyper-Threading pode lidar com mais threads simultaneamente, resultando em uma execução mais suave de várias tarefas. Essa capacidade é especialmente valiosa em situações onde a multitarefa é comum, como em ambientes de trabalho que envolvem a utilização simultânea de aplicativos diversos. 
-Além disso, a Intel tem sido pioneira na redução do tamanho dos transistores, uma característica crucial para aumentar a densidade de transistores em um chip. Embora o ritmo de diminuição desses transistores tenha enfrentado desafios recentemente, a tradição da Intel em explorar novas tecnologias de fabricação tem sido um fator impulsionador na evolução constante de seus processadores. 
-Em resumo, a arquitetura Intel é um casamento entre a tradição que solidificou sua posição no mercado e a inovação constante para atender às demandas dinâmicas dos usuários modernos. Ao equilibrar elementos consolidados com novas tecnologias, a Intel continua a ser uma força influente no desenvolvimento de processadores que se destacam em diversos cenários de uso. 
-Qual a principal diferença técnica entra as duas marcas? 
-b. Diferenças Técnicas e Impactos no Desempenho 
-Ao comparar os processadores AMD e Intel, é essencial entender as diferenças técnicas que influenciam diretamente no desempenho dos dispositivos. A arquitetura dos núcleos, a quantidade de cache, a tecnologia de fabricação e a frequência de clock são fatores críticos a serem considerados. Os processadores AMD Ryzen, por exemplo, frequentemente apresentam um maior número de núcleos físicos e lógicos em comparação com modelos equivalentes da Intel. Isso pode resultar em um desempenho superior em tarefas que se beneficiam do paralelismo, como renderização de vídeos e execução de máquinas virtuais. 
-Já a Intel, ao focar em frequências de clock mais altas, tende a se destacar em atividades que demandam um alto desempenho por núcleo, como jogos que ainda não tiram total proveito de múltiplos núcleos. 
+const pdfContent_CarreiraEmpreendedora = `
+VANESSA ALENCAR
+CURSO TÉCNICO DE ADMINISTRAÇÃO
+COM ÊNFASE EM EMPREENDEDORISMO
+CARREIRA EMPREENDEDORA
+AULA 1
+EDUCAÇÃO Secretaria de Estado da Educação / SEDUC
+Piauí
+GOVERNO DO ESTADO
+Conteúdo
+SECRETARIA DA EDUCAÇÃO SEDUC
+GOVERNO DO PIAUÍ AQUI TEM TRABALHO AQUI TEM FUTURO
+1 Introdução 3. 2 O papel transformador do empreendedorismo na sociedade 4. 3 Diversidade de caminhos para uma carreira empreendedora 6. 4 A importância da perseverança e adaptação no empreendedorismo 7. 5 Conclusão 9. 6 Glossário 9. 7 Referências 10.
+2
+SECRETARIA
+DA EDUCAÇÃO SEDUC
+GOVERNO DO PIAUÍ AQUI TEM TRABALHO AQUI TEM FUTURO
+1 Introdução
+O empreendedorismo é um campo vibrante e essencial que vai além da simples criação de empresas.
+Ele desempenha um papel crucial na sociedade ao impulsionar inovações e fornecer soluções para problemas contemporâneos.
+Empreendedores são aqueles que não apenas identificam oportunidades no mercado, mas também são capazes de transformar essas oportunidades em soluções criativas e eficazes.
+Eles veem os desafios como portas abertas para inovação, contribuindo significativamente para o desenvolvimento econômico e social por meio da geração de empregos e da introdução de novas ideias.
+Existem várias trajetórias que um aspirante a empreendedor pode seguir.
+Alguns podem optar por iniciar seu próprio negócio, enquanto outros podem encontrar seu caminho empreendendo dentro de empresas já estabelecidas ou trabalhando em negócios familiares.
+Há também aqueles que escolhem apoiar outros empreendedores ou explorar diferentes setores antes de se decidirem por um caminho específico.
+Cada uma dessas rotas oferece desafios únicos e exige uma combinação de visão, paixão e perseverança.
+A jornada empreendedora é marcada por constantes desafios e a necessidade de adaptação.
+Empreendedores bem-sucedidos são aqueles que não apenas têm a capacidade de persistir diante das adversidades, mas também de aprender continuamente e adaptar-se às mudanças do mercado.
+A carreira empreendedora é, por natureza, dinâmica e exige uma atualização constante das habilidades e conhecimentos para manter-se relevante e competitivo.
+Portanto, o empreendedorismo não é apenas sobre a construção de um negócio, mas sobre moldar o futuro e ter um impacto significativo no mundo.
+Ao oferecer soluções inovadoras, os empreendedores desempenham um papel fundamental no desenvolvimento econômico e social, desafiando o status quo e introduzindo novas maneiras de pensar e fazer negócios.
+Este material didático visa explorar esses aspectos do empreendedorismo, preparando os jovens para entender e talvez entrar neste campo estimulante.
+2 O papel transformador do empreendedorismo na sociedade
+O empreendedorismo desempenha um papel transformador na sociedade ao estimular a inovação e a resolução de problemas.
+Empreendedores, ao identificar lacunas e necessidades no mercado, desenvolvem soluções criativas que muitas vezes levam ao surgimento de novos produtos, serviços e tecnologias.
+Essas inovações não apenas atendem às demandas dos consumidores, mas também podem introduzir melhorias significativas na qualidade de vida das pessoas, promovendo avanços em diversos setores como saúde, educação e tecnologia.
+Além de impulsionar a inovação, o empreendedorismo é crucial para o desenvolvimento econômico.
+Ao criar empresas, os empreendedores geram empregos e estimulam o crescimento económico.
+Essa geração de empregos não se limita apenas à quantidade, mas também à qualidade, pois muitas startups promovem ambientes de trabalho inclusivos e dinâmicos que valorizam a diversidade e a criatividade.
+Isso contribui para uma economia mais robusta e diversificada, reduzindo a dependência de setores tradicionais e fomentando um ecossistema empresarial vibrante.
+Empreendedores frequentemente desafiam o status quo e introduzem novas maneiras de pensar e fazer negócios, o que pode levar a mudanças sociais significativas.
+Por exemplo, ao priorizar a sustentabilidade, empresas inovadoras podem influenciar outras a adotarem práticas mais responsáveis ambientalmente.
+Esse tipo de liderança pode transformar indústrias inteiras, promovendo uma mudança de paradigma que valoriza tanto o lucro quanto o planeta.
+A escolha do caminho empreendedor também reflete a capacidade de adaptação e aprendizado contínuo, habilidades essenciais no mundo dinâmico de hoje.
+Por fim, o empreendedorismo tem um papel crucial no desenvolvimento social ao promover a inclusão e acessibilidade.
+Muitos empreendedores estão comprometidos com a criação de soluções que atendam às necessidades de comunidades marginalizadas ou subatendidas, contribuindo assim para uma sociedade mais equitativa.
+3 Diversidade de caminhos para uma carreira empreendedora
+O empreendedorismo é uma jornada diversa e multifacetada, onde cada indivíduo pode escolher um caminho que melhor se alinhe com suas habilidades, interesses e circunstâncias pessoais.
+Uma das opções é iniciar uma empresa própria, um caminho tradicional que permite ao empreendedor trazer suas ideias inovadoras diretamente para o mercado.
+Outra alternativa é o intraempreendedorismo, que ocorre dentro de empresas já estabelecidas.
+Esta opção permite aos empreendedores trabalhar com recursos mais robustos e uma rede de suporte estabelecida, enquanto ainda inovam e conduzem mudanças significativas.
+Trabalhar em uma empresa familiar também é uma forma válida de empreendedorismo.
+Além disso, há aqueles que escolhem apoiar outros empreendedores, seja como mentores, investidores ou consultores.
+Finalmente, o empreendedorismo internacional oferece uma perspectiva global, permitindo aos empreendedores explorar novos mercados e culturas.
+4 A importância da perseverança e adaptação no empreendedorismo
+A perseverança é um dos pilares fundamentais para o sucesso no empreendedorismo.
+Empreendedores frequentemente enfrentam obstáculos e desafios que podem parecer insuperáveis, desde a falta de recursos financeiros até a resistência do mercado a novas ideias.
+No entanto, é a capacidade de persistir, mesmo diante das adversidades, que permite aos empreendedores superar essas barreiras.
+A capacidade de adaptação é igualmente crucial. O mercado está em constante mudança, e o que funciona hoje pode não funcionar amanhã.
+Empreendedores bem-sucedidos são aqueles que conseguem se adaptar rapidamente às novas condições e demandas do mercado.
+O aprendizado contínuo é outro aspecto importante da jornada empreendedora.
+O mundo dos negócios está sempre evoluindo, e as inovações tecnológicas e mudanças nas preferências dos consumidores podem alterar drasticamente o cenário de mercado.
+5 Conclusão
+Em resumo, o empreendedorismo desempenha um papel crucial no desenvolvimento econômico e social, não apenas criando empregos, mas também introduzindo inovações que desafiam o status quo e promovem a melhoria contínua em diversos setores.
+Além disso, a carreira empreendedora oferece uma variedade de caminhos que se adaptam às diferentes visões e circunstâncias individuais.
+Por fim, é fundamental que os empreendedores mantenham a perseverança, a capacidade de adaptação e o compromisso com o aprendizado contínuo.
+6 Glossário
+1. Empreendedorismo: Refere-se à iniciativa de estabelecer novos negócios ou revigorar negócios existentes, respondendo a oportunidades de mercado com inovação e risco calculado.
+2. Perseverança: Capacidade de continuar em um curso de ação, mesmo diante de dificuldades, obstáculos ou desânimo prolongado.
+3. Adaptação: Habilidade de mudar ou ajustar respostas em face de novas circunstâncias ou desafios no ambiente.
+4. Inovação: Processo de criar novas ideias, produtos ou métodos, que muitas vezes leva a melhorias significativas ou à resolução de problemas.
+5. Desenvolvimento econômico e social: Melhorias na qualidade de vida e bem-estar econômico das pessoas.
 `;
 
+
 // =================================================================
-// 1. FUNÇÕES DE SUPORTE (Busca Robusta)
+// 1. FUNÇÕES DE SUPORTE
 // =================================================================
 
-// Função Auxiliar para buscar frases dentro do conteúdo
 const searchPdfContent = (content, term) => {
-    // 1. Limpa e normaliza o termo de busca
     const lowerCaseTerm = term.toLowerCase()
         .replace(/[\u00A0\uFEFF]/g, ' ') 
         .replace(/\s+/g, ' ') 
@@ -49,7 +95,6 @@ const searchPdfContent = (content, term) => {
         .replace(/\s+/g, ' ') 
         .trim();
 
-    // 2. Divide o conteúdo em blocos para exibição, usando pontuações fortes como delimitadores
     const blocks = normalizedContent.split(/(?<=[.?!;])\s*/g).filter(s => s.trim().length > 0);
     const uniqueResults = new Set();
 
@@ -71,18 +116,16 @@ const searchPdfContent = (content, term) => {
 };
 
 
-// 2. Funcionalidade do Botão CTA (Chamada para Ação)
-document.getElementById('cta-button').addEventListener('click', function() {
+document.getElementById('cta-button')?.addEventListener('click', function() {
     alert('Ótima escolha! Vamos te conectar com o aprendizado. A partir de R$ 50,00, você já começa a estudar!');
-    document.getElementById('planos').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' });
 });
 
 
-// 3. Efeito de Fundo do Header ao Rolar (Scroll)
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
-        header.style.backgroundColor = '#1C6D42';
+        header.style.backgroundColor = '#1C6D42'; 
     } else {
         header.style.backgroundColor = 'var(--primary-color)';
     }
@@ -90,7 +133,7 @@ window.addEventListener('scroll', function() {
 
 
 // =================================================================
-// 4. Função para Abrir o PDF em uma NOVA ABA (COM PÁGINA E DESTAQUE)
+// 4. Função para Abrir o PDF
 // =================================================================
 function openPdf(fileName, page, searchTerm) {
     let url = fileName;
@@ -105,17 +148,12 @@ function openPdf(fileName, page, searchTerm) {
     }
     
     window.open(url, '_blank');
-    console.log(`Abrindo o arquivo: ${fileName} na página: ${page}, buscando por: ${searchTerm}.`);
 }
 
 // =================================================================
-// 5. LÓGICA DE DEBOUNCE E BUSCA EM TEMPO REAL
+// 5. LÓGICA DE BUSCA
 // =================================================================
 
-/**
- * Cria uma função debounced que atrasa a execução de 'func' até que 'delay' milissegundos
- * tenham decorrido desde a última vez que a função debounced foi chamada.
- */
 function debounce(func, delay) {
     let timeoutId;
     return function(...args) {
@@ -126,65 +164,72 @@ function debounce(func, delay) {
     };
 }
 
-// O buscador real (mantido inalterado)
 function searchMaterial() {
     const searchTerm = document.getElementById('pdf-search').value;
     const lowerCaseSearchTerm = searchTerm.toLowerCase(); 
 
     const serviceCards = document.querySelectorAll('.service-card');
-    const pdfResultsContainer = document.getElementById('pdf-results');
+    const pdfResultsContainer = document.querySelector('.pdf-results');
     
     let foundInServices = false;
     let htmlPdfResults = '';
     
     if (searchTerm.length === 0) {
-        // Se a busca estiver vazia, mostra todos os cards
         serviceCards.forEach(card => card.style.display = 'block');
         serviceCards.forEach(card => card.style.border = '5px solid var(--primary-color)');
-        pdfResultsContainer.innerHTML = '';
+        
+        pdfResultsContainer.innerHTML = `
+            <h4>Documento de Destaque</h4>
+            <a href="CARREIRA EMPREENDEDORA.pdf" class="pdf-item" target="_blank">
+                CARREIRA EMPREENDEDORA: Curso Técnico de Administração (Aula 1)
+            </a>
+        `;
         return; 
     }
 
-    // --- 5.1. Lista de Documentos Searchables (Com URL e PÁGINAS) ---
+    // --- LISTA DE DOCUMENTOS ---
     const documents = [
-        
         { 
-          title: 'Arquitetura de Computadores: Explorando os Processadores AMD e Intel', 
-          keywords: 'arquitetura de computadores, amd, intel, processadores, desenvolvimento de sistema, introdução', 
-          url: 'ConectaEdu.pdf', 
-          content: pdfContent_ConectaEdu,
-          page_start: 3 
+            title: 'CARREIRA EMPREENDEDORA: 1 Introdução', 
+            keywords: 'empreendedorismo, introdução, inovação, soluções, oportunidades, criação de empresas, desafios', 
+            url: 'CARREIRA EMPREENDEDORA.pdf', 
+            content: pdfContent_CarreiraEmpreendedora,
+            page_start: 3 
         },
-        
         { 
-          title: 'Arquitetura Intel: Tradição e Inovação', 
-          keywords: 'arquitetura intel, intel core, hyper-threading, microarquitetura x86', 
-          url: 'ConectaEdu.pdf', 
-          content: pdfContent_ConectaEdu,
-          page_start: 5 
+            title: 'O papel transformador do empreendedorismo na sociedade', 
+            keywords: 'papel transformador, inovação, resolução de problemas, desenvolvimento econômico, sustentabilidade, inclusão', 
+            url: 'CARREIRA EMPREENDEDORA.pdf', 
+            content: pdfContent_CarreiraEmpreendedora,
+            page_start: 4 
         },
-
         { 
-          title: 'Diferenças Técnicas e Impactos no Desempenho', 
-          keywords: 'diferenças técnicas, desempenho, cache, frequência clock, ryzen, intel', 
-          url: 'ConectaEdu.pdf', 
-          content: pdfContent_ConectaEdu,
-          page_start: 7 
+            title: 'Diversidade de caminhos para uma carreira empreendedora', 
+            keywords: 'diversidade, caminhos, empresa própria, intraempreendedorismo, empresa familiar, investidores, mentores, internacional', 
+            url: 'CARREIRA EMPREENDEDORA.pdf', 
+            content: pdfContent_CarreiraEmpreendedora,
+            page_start: 6 
         },
-        
         { 
-          title: 'Guia Rápido de Canva e Design', 
-          keywords: 'canva, design, habilidades digitais', 
-          content: 'Guia de introdução ao Canva e técnicas básicas de design digital. Aprenda a criar apresentações e posts para redes sociais.'
+            title: 'A importância da perseverança e adaptação no empreendedorismo', 
+            keywords: 'perseverança, adaptação, aprendizado contínuo, obstáculos, incertezas, sucesso', 
+            url: 'CARREIRA EMPREENDEDORA.pdf', 
+            content: pdfContent_CarreiraEmpreendedora,
+            page_start: 7 
         },
+        { 
+            title: 'Glossário de Termos Chave', 
+            keywords: 'glossário, empreendedorismo, perseverança, adaptação, inovação, desenvolvimento econômico e social', 
+            url: 'CARREIRA EMPREENDEDORA.pdf', 
+            content: pdfContent_CarreiraEmpreendedora,
+            page_start: 9
+        }
     ];
     
-    
-    // --- 5.2. Filtragem dos cards de serviço (Cursos) ---
+    // Filtragem dos cards de serviço
     serviceCards.forEach(card => {
         const cardTitle = card.querySelector('h4').textContent.toLowerCase();
         const cardDescription = card.querySelector('p').textContent.toLowerCase();
-        
         const matches = cardTitle.includes(lowerCaseSearchTerm) || cardDescription.includes(lowerCaseSearchTerm);
 
         if (matches) {
@@ -196,30 +241,38 @@ function searchMaterial() {
         }
     });
 
-    // --- 5.3. Busca de Frases dentro dos Conteúdos ---
+    // Busca de Frases
     const pdfContentMatches = [];
     
     documents.forEach(doc => {
         if (doc.content) {
-            const matches = searchPdfContent(doc.content, searchTerm); 
-            if (matches.length > 0) {
+            const keywordMatch = doc.keywords.toLowerCase().includes(lowerCaseSearchTerm) || doc.title.toLowerCase().includes(lowerCaseSearchTerm);
+            
+            let matches = [];
+            if (!keywordMatch) {
+                 matches = searchPdfContent(doc.content, searchTerm); 
+            }
+            
+            if (matches.length > 0 || keywordMatch) {
+                // ✅ CORREÇÃO AQUI: Remove o texto "Encontrado nas palavras-chave..."
+                // Agora exibe apenas o título do documento ou o texto encontrado
+                const phrases = matches.length > 0 ? matches : [doc.title]; 
+
                 pdfContentMatches.push({ 
                     title: doc.title, 
                     url: doc.url, 
-                    phrases: matches, 
+                    phrases: phrases, 
                     page_start: doc.page_start 
                 }); 
             }
         }
     });
 
-
-    // --- 5.4. Exibição dos Resultados (COM LINKS DE PDF) ---
+    // Exibição dos Resultados
     if (pdfContentMatches.length > 0) {
         htmlPdfResults += '<h4>📁 Trechos Encontrados em Documentos e Materiais Didáticos:</h4>';
         
         pdfContentMatches.forEach(docMatch => {
-            
             const pageInfo = docMatch.page_start ? ` (Página ${docMatch.page_start})` : '';
             const openPdfLink = docMatch.url ? 
                 ` (<a href="#" onclick="openPdf('${docMatch.url}', ${docMatch.page_start || 1}, '${searchTerm}'); return false;">Abrir PDF completo</a>)` : 
@@ -230,13 +283,10 @@ function searchMaterial() {
             docMatch.phrases.forEach(phrase => {
                 let displayedPhrase = phrase;
                 
-                // Se NÃO houver URL de PDF, faz o destaque in-line
-                if (!docMatch.url) {
-                    const termToHighlight = searchTerm.replace(/[\u00A0\uFEFF]/g, ' ').replace(/\s+/g, ' ').trim();
-                    displayedPhrase = phrase.replace(new RegExp(termToHighlight, 'gi'), match => `<strong>${match}</strong>`);
-                }
+                // Destaque local
+                const termToHighlight = searchTerm.replace(/[\u00A0\uFEFF]/g, ' ').replace(/\s+/g, ' ').trim();
+                displayedPhrase = phrase.replace(new RegExp(termToHighlight, 'gi'), match => `<strong>${match}</strong>`);
                 
-                // O clique para abrir o PDF só é adicionado se houver uma URL válida
                 const onClickAction = docMatch.url ? `onclick="openPdf('${docMatch.url}', ${docMatch.page_start || 1}, '${searchTerm}'); return false;" style="cursor: pointer;"` : '';
                 
                 htmlPdfResults += `<p class="pdf-item" ${onClickAction} style="background-color: #f0f0f0; border-left: 3px solid #4682B4; margin-bottom: 5px;">... ${displayedPhrase}</p>`;
@@ -244,32 +294,23 @@ function searchMaterial() {
         });
     }
 
-    
-    // --- 5.5. Feedback Final ---
+    // Feedback Final
     pdfResultsContainer.innerHTML = htmlPdfResults;
     
     if (!foundInServices && pdfContentMatches.length === 0) {
         pdfResultsContainer.innerHTML = `<h4>Nenhum curso ou material didático encontrado para "${searchTerm}".</h4>`;
-        
         serviceCards.forEach(card => card.style.display = 'block');
         serviceCards.forEach(card => card.style.border = '5px solid var(--primary-color)');
     } else if (pdfContentMatches.length > 0 && !foundInServices) {
-         serviceCards.forEach(card => card.style.display = 'block');
-         serviceCards.forEach(card => card.style.border = '5px solid var(--primary-color)');
+          serviceCards.forEach(card => card.style.display = 'block');
+          serviceCards.forEach(card => card.style.border = '5px solid var(--primary-color)');
     }
 }
 
-
-// --- 6. ATIVAÇÃO DA BUSCA EM TEMPO REAL ---
-
-// Cria a função debounced (atrasada)
-const debouncedSearch = debounce(searchMaterial, 300); // 300ms de atraso
-
-// Adiciona o novo evento de escuta à caixa de busca
-document.getElementById('pdf-search').addEventListener('input', debouncedSearch);
-
-// Remove o antigo listener de clique, se ele ainda existir (opcional, mas seguro)
-document.getElementById('search-button').addEventListener('click', (e) => {
-    e.preventDefault(); // Impede o envio do formulário, se houver
-    searchMaterial(); // Executa a busca imediatamente, caso o usuário clique
+// ATIVAÇÃO DA BUSCA
+const debouncedSearch = debounce(searchMaterial, 300); 
+document.getElementById('pdf-search')?.addEventListener('input', debouncedSearch);
+document.querySelector('.search-box button')?.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    searchMaterial(); 
 });
